@@ -41,6 +41,7 @@ parser.add_argument('--proxy-port', type=int, default=8080, help="Port for proxy
 parser.add_argument('--verbosity', choices=[x.name for x in io.LogLevel], default=io.LogLevel.NoLogs.name,
     help='Logging level')
 parser.add_argument('--device-name', help="Device name")
+parser.add_argument('--interval', type=int, default=1, help="Interval between message publishing")
 
 # Using globals to simplify sample code
 args = parser.parse_args()
@@ -160,7 +161,7 @@ if __name__ == '__main__':
                 topic=args.topic,
                 payload=jsonData,
                 qos=mqtt.QoS.AT_LEAST_ONCE)
-            time.sleep(1)
+            time.sleep(args.interval)
             publish_count += 1
 
     # Wait for all messages to be received.
