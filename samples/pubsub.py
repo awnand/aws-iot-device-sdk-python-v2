@@ -154,7 +154,7 @@ if __name__ == '__main__':
 
         publish_count = 1
         while (publish_count <= args.count) or (args.count == 0):
-            message = {"device_name": args.device-name, "data": {"temp": 80, "humidity": 0.33}, "message": args.message}
+            message = {"device_name": args.device_name, "data": {"temp": 80, "humidity": 0.33}, "message": args.message}
             jsonData = json.dumps(message)
             print("Publishing message to topic '{}': {}".format(args.topic, message))
             mqtt_connection.publish(
